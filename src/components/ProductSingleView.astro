@@ -1,0 +1,44 @@
+---
+const { product } = Astro.props;
+---
+
+<section class="product-details">
+  <img
+    src={product.image_url || "https://via.placeholder.com/150"}
+    alt={product.name || "No Name Available"}
+    class="product-image"
+  />
+  <h1 class="product-title">{product.name || "Product Name Unavailable"}</h1>
+  <p class="product-price">{product.price ? `${product.price} DKK` : "Price Not Available"}</p>
+  <p class="product-description">{product.description || "No description available."}</p>
+</section>
+
+<style>
+  .product-details {
+    text-align: center;
+    padding: 2rem;
+    color: white;
+  }
+
+  .product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .product-title {
+    font-size: 2rem;
+    color: #8c6b9c; /* Purple */
+  }
+
+  .product-price {
+    font-size: 1.5rem;
+    color: #00ffaa; /* Green */
+  }
+
+  .product-description {
+    font-size: 1rem;
+    color: white;
+  }
+</style>
