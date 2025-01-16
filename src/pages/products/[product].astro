@@ -1,0 +1,117 @@
+---
+import { getAllProducts, getProductById } from "../../scripts/products.js";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+export async function getStaticPaths() {
+  const products = await getAllProducts();
+
+  if (!products || products.length === 0) {
+    throw new Error("No products found in the database.");
+  }
+
+  return products.map((product) => ({
+    params: { product: product.id.toString() },
+  }));
+}
+
+const { product } = Astro.params; // Match `product` from params
+const productData = await getProductById(Number(product)); // Convert to number
+
+if (!productData) {
+  throw new Error(`Product with ID ${product} not found.`);
+}
+---
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>PRODUKTER</title>
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  
+  <body>
+    <Header />
+    <main class="product-page">
+      <div class="product-card">
+        <img
+          src={productData.image_url || '/default.png'}
+          alt={productData.name}
+          class="product-image"
+        />
+        <h1 class="product-title">{productData.name.replace(/_/g, ' ')}</h1>
+        <p class="product-description">{productData.description}</p>
+        <p class="product-price">{productData.price}</p>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  body {
+    background-color: black;
+    color: black;
+    font-family: "Exo", sans-serif;
+    padding: 0;
+    margin: 0;
+  }
+
+  .product-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 150px); /* Adjust based on header/footer height */
+    padding: 20px;
+    background-color: black;
+  }
+
+  .product-card {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 10px; /* Increased padding for larger appearance */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    max-width: 450px; /* Increased max-width for larger card */
+    width: 100%; /* Ensures responsiveness */
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+      padding: 10px;
+  }
+
+  .product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  }
+
+  .product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    aspect-ratio: 3 / 4;
+    margin-bottom: 20px; /* Added spacing below image */
+  }
+
+  .product-title {
+    font-size: 2rem; /* Increased font size */
+    color: #c9a3e6; /* Purple for title */
+    margin: 15px 0;
+    font-family: "Orbitron", sans-serif;
+    text-transform: uppercase;
+  }
+
+  .product-description {
+    font-size: 1.1rem; /* Slightly larger description font */
+    color: #d3d3d3; /* Light gray for description */
+    margin: 15px 0;
+    font-family: "Exo", sans-serif;
+  }
+
+  .product-price {
+    font-size: 1.5rem; /* Larger price font */
+    color: turquoise;
+    font-family: "Exo", sans-serif;
+    margin: 10px 0;
+  }
+</style>
+

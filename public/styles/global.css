@@ -8,16 +8,19 @@
   text-decoration: none; /* Remove underline from links */
   padding: 0.5rem 1rem; /* Adjust spacing */
   display: inline-block; /* Ensures clickable links */
+  
 }
 
 .menu a:hover {
-  color: #ffffff; /* Purple on hover */
+  color: #6bf06b; /* Green hover color */
 }
+
+
 
 
 body {
   margin: 0;
-  font-family: "Exo", sans-serif; /* Apply a global fallback font */
+  font-family: 'Orbitron', sans-serif; /* Apply a global fallback font */
   background-color: #000;
   color: white;
 }
@@ -45,7 +48,7 @@ html, body {
 }
 
 footer {
-  font-family: "Exo", sans-serif;
+  font-family: 'Orbitron', sans-serif;
   color: white;
   text-align: center;
   background-color: #c69cdb; /* Purple */

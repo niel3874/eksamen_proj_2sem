@@ -2,36 +2,22 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { getAllProducts } from "../scripts/products.js";
-import Layout from "../layouts/Layout.astro";
+
 // Hent produkter fra Supabase
 const products = await getAllProducts(); // Ændret fra getProductById til getAllProducts
 ---
 
 <html lang="da">
   <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Exo:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
-      <link rel="stylesheet" href="/styles/global.css" />
-    />
+
     <meta charset="UTF-8" />
   </head>
 </html>
 
 <Header />
+<body>
+
+
 <main>
   <!-- Hero Slideshow Sektion -->
   <section class="hero">
@@ -44,7 +30,7 @@ const products = await getAllProducts(); // Ændret fra getProductById til getAl
 
   <!-- Kategorier Sektion (2x2 Grid) -->
   <section class="image-grid">
-    <h2>PRODUKTER</h2>
+    <a href="/products" class="products-link">PRODUKTER</a>
     <div class="grid">
       <div class="col1">
         <img
@@ -77,7 +63,7 @@ const products = await getAllProducts(); // Ændret fra getProductById til getAl
     </div>
   </section>
 </main>
-
+</body>
 <!-- Video Sektion -->
 <div class="video-container">
   <iframe
@@ -149,7 +135,9 @@ const products = await getAllProducts(); // Ændret fra getProductById til getAl
     text-align: center; /* Optional: Center-align text */
     width: 90%;
     max-width: 600px; /* Limit maximum width */
-    margin: 0 auto; /* Center the section on the page */
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 0px; /* Center the section on the page */
   }
 
   .grid {
@@ -184,95 +172,6 @@ const products = await getAllProducts(); // Ændret fra getProductById til getAl
     grid-column: 1;
   }
 
-  .col4 {
-    grid-row: 2;
-    grid-column: 2;
-  }
-
-  /* Video Sektion */
-  .video-container {
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Full viewport height */
-    margin: 0; /* Remove any default margins */
-  }
-
-  .video {
-    width: 100%; /* Optional: Adjust the iframe to fit the container */
-    max-width: 560px; /* Maintain a reasonable max size */
-    height: auto; /* Maintain aspect ratio */
-  }
-
-  .video-container {
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Full viewport height */
-    margin: 0; /* Remove any default margins */
-  }
-
-  .video {
-    width: 100%; /* Optional: Adjust the iframe to fit the container */
-    max-width: 560px; /* Maintain a reasonable max size */
-    height: auto; /* Maintain aspect ratio */
-  }
-
-  .video-container {
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Full viewport height */
-    margin: 0; /* Remove any default margins */
-  }
-
-  .video {
-    width: 100%; /* Optional: Adjust the iframe to fit the container */
-    max-width: 560px; /* Maintain a reasonable max size */
-    height: auto; /* Maintain aspect ratio */
-  }
-
-  .video-container {
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Full viewport height */
-    margin: 0; /* Remove any default margins */
-  }
-
-  .video {
-    width: 100%; /* Optional: Adjust the iframe to fit the container */
-    max-width: 560px; /* Maintain a reasonable max size */
-    height: auto; /* Maintain aspect ratio */
-  }
-
-  .video-container {
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Full viewport height */
-    margin: 0; /* Remove any default margins */
-  }
-
-  .video {
-    width: 100%; /* Optional: Adjust the iframe to fit the container */
-    max-width: 560px; /* Maintain a reasonable max size */
-    height: auto; /* Maintain aspect ratio */
-  }
-
-  .video-container {
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Full viewport height */
-    margin: 0; /* Remove any default margins */
-  }
-
-  .video {
-    width: 100%; /* Optional: Adjust the iframe to fit the container */
-    max-width: 560px; /* Maintain a reasonable max size */
-    height: auto; /* Maintain aspect ratio */
-  }
 
   .video-container {
     display: flex; /* Use flexbox for centering */
@@ -299,7 +198,7 @@ const products = await getAllProducts(); // Ændret fra getProductById til getAl
 
   h2 {
     color: turquoise;
-    font-family: "Orbitron";
+    font-family: "Orbitron", sans-serif;
     text-align: center;
   }
 
@@ -307,5 +206,18 @@ const products = await getAllProducts(); // Ændret fra getProductById til getAl
     .hero {
       height: 40vh;
     }
+  }
+
+  .products-link {
+    text-decoration: none;
+    color: turquoise; /* Matches the current h2 styling */
+    font-family: "Orbitron", sans-serif;
+    font-style: bold;;
+    font-size: 2rem; /* Matches the h2 font size */
+    text-align: center;
+  }
+
+  .products-link:hover {
+    color: #c9a3e6;
   }
 </style>

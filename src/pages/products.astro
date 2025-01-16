@@ -1,67 +1,132 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
-import ProductList from "../components/ProductList.astro";
-import { getAllProducts } from "../scripts/products.js";
 import Footer from "../components/Footer.astro";
+import { getAllProducts } from "../scripts/products.js";
 
 
+// Fetch all products
+const allProducts = await getAllProducts();
 
-// Explicitly define the type of `products` as an array of objects
-let products: { id: number; name: string; image_url: string; [key: string]: any }[] = [];
-
-async function fetchProducts() {
-  try {
-    console.log("Fetching products for Product List...");
-    const allProducts = (await getAllProducts()) || [];
-    // Ensure the type is consistent by filtering the products correctly
-    products = allProducts.filter((product: { id: number }) => product.id >= 1 && product.id <= 9);
-  } catch (error: unknown) {
-    console.error("Error fetching products:", (error as Error).message);
-  }
-}
-
-await fetchProducts();
+// Filter products with IDs between 1 and 9
+const products = allProducts.filter((product) => product.id >= 1 && product.id <= 9);
 ---
-
-<html lang="da">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <title>Produkter</title>
+    <title>PRODUKTER</title>
     <link rel="stylesheet" href="/styles/global.css" />
   </head>
-  <body class="black-background">
+  
+  <body>
     <Header />
-    <main>
-      <h1 class="category-title">Produkter</h1>
-      {products.length > 0 ? (
-        <ProductList products={products} />
-      ) : (
-        <p class="no-products">Ingen produkter tilgængelige.</p>
-      )}
+    <main class="products-page">
+      <h1 class="products-title">BOARDS</h1>
+      <div class="product-list">
+        {products.map((product) => (
+          <a class="product-link" href={`/products/${product.id}`}>
+            <div class="product-item">
+              <img src={product.image_url || '/default.png'} alt={product.name || 'Product'} />
+              <h2 class="product-name">{product.name?.replace(/_/g, ' ') || 'Unknown Product'}</h2>
+              <p class="product-price">{product.price || 'N/A'}</p>
+            </div>
+          </a>
+        ))}
     </main>
     <Footer />
   </body>
 </html>
 
+
 <style>
-  .black-background {
+  /* General Page Styling */
+  body {
     background-color: black;
     color: white;
-    margin: 0;
     font-family: "Exo", sans-serif;
+    padding: 0;
+    margin: 0;
+  }
+  
+
+  .products-page {
+    padding: 30px 10px;
+    text-align: center;
+    background-color: black;
   }
 
-  .category-title {
+  .products-title {
     font-family: "Orbitron", sans-serif;
-    color: #c69cdb; /* Purple */
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: 2.3rem;
+    color:turquoise;c9a3e6;
+    margin-bottom: 30px;
   }
 
-  .no-products {
-    color: red;
-    text-align: center;
+  /* Product List Grid */
+  .product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for desktop */
+    gap: 100px; /* Space between cards */
+    justify-items: center;
+    max-width: 1200px;
+    margin: 0 auto; /* Centers the grid on the page */
+    padding: 0 10px; /* Adds padding around the grid */
+  }
+
+  /* Individual Product Card */
+  .product-item {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow:  4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%; /* Ensures consistency across cards */
+    max-width: 500px; /* Makes cards consistent in size */
+  }
+
+  .product-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Product Image */
+  .product-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    aspect-ratio: 3 / 4; /* Consistent aspect ratio */
+  }
+
+  /* Product Name */
+  .product-name {
+    font-size: 1.2rem;
+    color: #c9a3e6;
+    margin: 8px 0 5px;
+    font-family: "Orbitron", sans-serif;
+    text-transform: uppercase;
+  }
+
+  /* Product Price */
+  .product-price {
+    font-size: 1rem;
+    color: turquoise;
+    margin: 10px 0;
+    font-family: "Exo", sans-serif;
+    
+  }
+
+  /* Product Link */
+  .product-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .product-list {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
+      gap: 20px; /* Adjust spacing */
+    }
   }
 </style>

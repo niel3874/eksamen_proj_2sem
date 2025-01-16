@@ -1,44 +1,31 @@
 import { supabase } from "./supabaseClient.js";
 
+// Fetch all products
 export async function getAllProducts() {
-  try {
-    console.log("Fetching all products from Supabase...");
-    const { data, error } = await supabase
-      .from("products")
-      .select("*")
-      .order("id", { ascending: true });
+  const { data, error } = await supabase
+    .from("products")
+    .select("id, name, price, description, image_url");
 
-    if (error) {
-      console.error("Error fetching products:", error.message);
-      return [];
-    }
-
-    console.log("Fetched products:", data);
-    return data;
-  } catch (err) {
-    console.error("Unexpected error fetching products:", err);
+  if (error) {
+    console.error("Error fetching products:", error.message);
     return [];
   }
+
+  return data; // Returns an array of products
 }
 
-// Function to fetch a single product by ID
+// Fetch a single product by ID
 export async function getProductById(id) {
-  try {
-    console.log(`Fetching product with ID: ${id}`);
-    const { data, error } = await supabase
-      .from("products")
-      .select("*")
-      .eq("id", id)
-      .single();
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .eq("id", id) // Match the numeric ID
+    .single();
 
-    if (error) {
-      console.error(`Error fetching product with ID ${id}:`, error.message);
-      return null;
-    }
-
-    return data;
-  } catch (err) {
-    console.error(`Unexpected error fetching product with ID ${id}:`, err);
+  if (error) {
+    console.error(`Error fetching product with ID ${id}:`, error.message);
     return null;
   }
+
+  return data; // Returns a single product object
 }

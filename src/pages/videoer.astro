@@ -1,7 +1,7 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+
 
 
 ---
@@ -10,7 +10,7 @@ import Footer from "../components/Footer.astro";
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="/styles/global.css">
-    <title>Videoer</title>
+    <title>VIDEOER</title>
     <style>
       body {
         margin: 0;
@@ -22,7 +22,15 @@ import Footer from "../components/Footer.astro";
         flex-direction: column;
         min-height: 100vh;
       }
-
+h1 {
+    font-family: "Orbitron", sans-serif;
+    color: turquoise;
+    font-size: 2.3rem;
+    margin-bottom: 3rem;
+    margin-bottom: 30px;
+    margin-top: 40px;
+    text-transform: uppercase; /* This makes the text all uppercase */
+}
       main {
         flex: 1; /* Ensures the main content takes up available space */
         padding: 1rem;
@@ -44,11 +52,6 @@ import Footer from "../components/Footer.astro";
         border: none; /* Removes default border if any */
       }
 
-      h1 {
-        font-family: "Orbitron", sans-serif;
-        color: turquoise;
-        margin-bottom: 3rem;
-      }
     </style>
   </head>
   <body>
