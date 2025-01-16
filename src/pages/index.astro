@@ -30,7 +30,9 @@ const products = await getAllProducts(); // Ændret fra getProductById til getAl
 
   <!-- Kategorier Sektion (2x2 Grid) -->
   <section class="image-grid">
-    <a href="/products" class="products-link">PRODUKTER</a>
+    <h2>
+      <a href="/products" class="products-link blink">PRODUKTER</a>
+    </h2>
     <div class="grid">
       <div class="col1">
         <img
@@ -208,16 +210,27 @@ const products = await getAllProducts(); // Ændret fra getProductById til getAl
     }
   }
 
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .blink {
+    animation: blink 1.2s infinite;
+  }
+
   .products-link {
     text-decoration: none;
-    color: yellow; /* Matches the current h2 styling */
+    color: turquoise;
     font-family: "Orbitron", sans-serif;
-    font-style: bold;;
-    font-size: 2rem; /* Matches the h2 font size */
-    text-align: center;
+    font-size: 1.8rem;
   }
 
   .products-link:hover {
-    color: #c9a3e6;
+    color: yellow;  Turkis hover effekt
   }
 </style>
