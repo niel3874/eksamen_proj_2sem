@@ -34,34 +34,30 @@ const products = await getAllProducts(); // Ændret fra getProductById til getAl
       <a href="/products" class="products-link blink">PRODUKTER</a>
     </h2>
     <div class="grid">
-      <div class="col1">
-        <img
-          src="https://ztxzipatdcssuqhtzgkx.supabase.co/storage/v1/object/sign/products/boards/boards.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwcm9kdWN0cy9ib2FyZHMvYm9hcmRzLndlYnAiLCJpYXQiOjE3MzQ0NDE0MDYsImV4cCI6MTczNzAzMzQwNn0.B-TNTBitKCosxbX4Qv6eZ0BZqb3f9eFrNYfs-uYbhZc&t=2024-12-17T13%3A16%3A46.628Z/"
-          alt="Boards"
-        />
-        <h3>BOARDS</h3>
-      </div>
-      <div class="col2">
-        <img
-          src="https://ztxzipatdcssuqhtzgkx.supabase.co/storage/v1/object/sign/products/tilbehoer/tilbehoer.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwcm9kdWN0cy90aWxiZWhvZXIvdGlsYmVob2VyLndlYnAiLCJpYXQiOjE3MzQ0NDE0MTcsImV4cCI6MTczNzAzMzQxN30.GDpchOpW0YowhaKVq60Rab95ti_j6L9zrESzIElhRWA&t=2024-12-17T13%3A16%3A57.972Z"
-          alt="Tilbehør"
-        />
-        <h3>TILBEHØR</h3>
-      </div>
-      <div class="col3">
-        <img
-          src="https://ztxzipatdcssuqhtzgkx.supabase.co/storage/v1/object/sign/products/toej/toej.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwcm9kdWN0cy90b2VqL3RvZWoud2VicCIsImlhdCI6MTczNDQ0MTIwNSwiZXhwIjoxNzM3MDMzMjA1fQ.ew4q8j4dGfqFgNY20XqH1rznK1oHWzAP5SL47STgQJg&t=2024-12-17T13%3A13%3A25.517Z"
-          alt="Tøj"
-        />
-        <h3>TØJ</h3>
-      </div>
-      <div class="col4">
-        <img
-          src="https://ztxzipatdcssuqhtzgkx.supabase.co/storage/v1/object/sign/products/accessories/accessories.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwcm9kdWN0cy9hY2Nlc3Nvcmllcy9hY2Nlc3Nvcmllcy53ZWJwIiwiaWF0IjoxNzM0NDQxNDI5LCJleHAiOjE3MzcwMzM0Mjl9.pVZN5-PhHpHdB1R0ruIcmDYbDNP26qT4TlhHBvMkZWU&t=2024-12-17T13%3A17%3A09.576Z"
-          alt="Accessories"
-        />
-        <h3>ACCESSORIES</h3>
-      </div>
+      <a href="/products?category=boards" class="grid-item">
+        <div class="card">
+          <img src="https://umsrfsonmiqheskcesqh.supabase.co/storage/v1/object/public/products/boards.webp" alt="Boards" />
+          <h3>BOARDS</h3>
+        </div>
+      </a>
+      <a href="/products?category=tilbehoer" class="grid-item">
+        <div class="card">
+          <img src="https://umsrfsonmiqheskcesqh.supabase.co/storage/v1/object/public/products/tilbehoer.webp" alt="Tilbehør" />
+          <h3>TILBEHØR</h3>
+        </div>
+      </a>
+      <a href="/products?category=toej" class="grid-item">
+        <div class="card">
+          <img src="https://umsrfsonmiqheskcesqh.supabase.co/storage/v1/object/public/products/toej.webp" alt="Tøj" />
+          <h3>TØJ</h3>
+        </div>
+      </a>
+      <a href="/products?category=accessories" class="grid-item">
+        <div class="card">
+          <img src="https://umsrfsonmiqheskcesqh.supabase.co/storage/v1/object/public/products/accessories.webp" alt="Accessories" />
+          <h3>ACCESSORIES</h3>
+        </div>
+      </a>
     </div>
   </section>
 </main>
@@ -192,7 +188,10 @@ const products = await getAllProducts(); // Ændret fra getProductById til getAl
   html {
     background-color: black;
   }
-
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
   h3 {
     color: turquoise;
     font-family: "exo 2";
