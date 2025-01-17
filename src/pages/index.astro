@@ -114,6 +114,7 @@ const products = await getAllProducts(); // Ændret fra getProductById til getAl
 
   .slide {
     position: absolute;
+    object-fit: cover;
     top: 0;
     left: 0;
     width: 100%;
@@ -153,6 +154,7 @@ const products = await getAllProducts(); // Ændret fra getProductById til getAl
     width: 100%; /* Make images responsive */
     height: auto; /* Maintain aspect ratio */
     border-radius: 8px; /* Optional: Rounded corners */
+    object-fit: cover; /* Maintain aspect ratio and fill the container */
   }
 
   .col1 {
@@ -192,15 +194,14 @@ const products = await getAllProducts(); // Ændret fra getProductById til getAl
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
 }
-  h3 {
-    color: turquoise;
-    font-family: "exo 2";
-  }
-
-  h2 {
+h2 {
     color: turquoise;
     font-family: "Orbitron", sans-serif;
     text-align: center;
+  }
+h3 {
+    color: turquoise;
+    font-family: "exo 2";
   }
 
   @media (max-width: 786px) {
@@ -230,6 +231,6 @@ const products = await getAllProducts(); // Ændret fra getProductById til getAl
   }
 
   .products-link:hover {
-    color: yellow;  Turkis hover effekt
+    color: yellow;  Gul hover effekt
   }
 </style>
