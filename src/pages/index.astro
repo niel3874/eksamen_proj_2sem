@@ -4,232 +4,209 @@ import Footer from "../components/Footer.astro";
 import { getAllProducts } from "../scripts/products.js";
 
 // Hent produkter fra Supabase
-const products = await getAllProducts(); // Ændret fra getProductById til getAllProducts
+const products = await getAllProducts();
 ---
 
 <html lang="da">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <script src="/scripts/main.js" defer></script> <!-- Tilføjet korrekt -->
+</head>
 
-    <meta charset="UTF-8" />
-  </head>
-</html>
-
-<Header />
+<script src="/heroscript/hero.js" defer></script>
 <body>
+    <Header />
 
+    <main>
+        <!-- Hero Slideshow Sektion -->
+        <section class="hero">
+            <div class="slideshow">
+                <img src="/img/crack_your_city.webp" alt="Slide 1" class="slide active" />
+                <img src="/img/glitch.webp" alt="Slide 2" class="slide" />
+                <img src="/img/stickers.webp" alt="Slide 3" class="slide" />
+            </div>
+        </section>
 
-<main>
-  <!-- Hero Slideshow Sektion -->
-  <section class="hero">
-    <div class="slideshow">
-      <img src="/img/crack_your_city.webp" alt="Slide 1" class="slide active" />
-      <img src="/img/glitch.webp" alt="Slide 2" class="slide" />
-      <img src="/img/stickers.webp" alt="Slide 3" class="slide" />
+        <!-- Kategorier Sektion (2x2 Grid) -->
+        <section class="image-grid">
+            <h2>
+                <a href="/products" class="products-link blink">PRODUKTER</a>
+            </h2>
+            <div class="grid">
+                <a href="/products?category=boards" class="grid-item">
+                    <div class="card">
+                        <img src="https://umsrfsonmiqheskcesqh.supabase.co/storage/v1/object/public/products/boards.webp" alt="Boards" />
+                        <h3>BOARDS</h3>
+                    </div>
+                </a>
+                <a href="/products?category=tilbehoer" class="grid-item">
+                    <div class="card">
+                        <img src="https://umsrfsonmiqheskcesqh.supabase.co/storage/v1/object/public/products/tilbehoer.webp" alt="Tilbehør" />
+                        <h3>TILBEHØR</h3>
+                    </div>
+                </a>
+                <a href="/products?category=toej" class="grid-item">
+                    <div class="card">
+                        <img src="https://umsrfsonmiqheskcesqh.supabase.co/storage/v1/object/public/products/toej.webp" alt="Tøj" />
+                        <h3>TØJ</h3>
+                    </div>
+                </a>
+                <a href="/products?category=accessories" class="grid-item">
+                    <div class="card">
+                        <img src="https://umsrfsonmiqheskcesqh.supabase.co/storage/v1/object/public/products/accessories.webp" alt="Accessories" />
+                        <h3>ACCESSORIES</h3>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Video Sektion -->
+    <div class="video-container">
+        <iframe
+            class="video"
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/enIcZBVPzmg?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&fs=0&modestbranding=1"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+        </iframe>
     </div>
-  </section>
 
-  <!-- Kategorier Sektion (2x2 Grid) -->
-  <section class="image-grid">
-    <h2>
-      <a href="/products" class="products-link blink">PRODUKTER</a>
-    </h2>
-    <div class="grid">
-      <a href="/products?category=boards" class="grid-item">
-        <div class="card">
-          <img src="https://umsrfsonmiqheskcesqh.supabase.co/storage/v1/object/public/products/boards.webp" alt="Boards" />
-          <h3>BOARDS</h3>
-        </div>
-      </a>
-      <a href="/products?category=tilbehoer" class="grid-item">
-        <div class="card">
-          <img src="https://umsrfsonmiqheskcesqh.supabase.co/storage/v1/object/public/products/tilbehoer.webp" alt="Tilbehør" />
-          <h3>TILBEHØR</h3>
-        </div>
-      </a>
-      <a href="/products?category=toej" class="grid-item">
-        <div class="card">
-          <img src="https://umsrfsonmiqheskcesqh.supabase.co/storage/v1/object/public/products/toej.webp" alt="Tøj" />
-          <h3>TØJ</h3>
-        </div>
-      </a>
-      <a href="/products?category=accessories" class="grid-item">
-        <div class="card">
-          <img src="https://umsrfsonmiqheskcesqh.supabase.co/storage/v1/object/public/products/accessories.webp" alt="Accessories" />
-          <h3>ACCESSORIES</h3>
-        </div>
-      </a>
-    </div>
-  </section>
-</main>
+    <Footer />
+
+
+    <!-- CSS -->
+    <style>
+        /* HERO SLIDESHOW */
+        .hero {
+            position: relative;
+            width: 100vw; /* Rettet fra vh til vw */
+            height: 80vh;
+            overflow: hidden;
+        }
+
+        .slideshow {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            object-fit: fill; /* Rettet fra fill til cover */
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        /* GRID SYSTEM */
+        .image-grid {
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+            margin: 50px auto 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 20px;
+        }
+
+        .grid div {
+            text-align: center;
+        }
+
+        .grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        /* VIDEO */
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .video {
+            width: 100%;
+            max-width: 800px;
+            height: 100%;
+        }
+
+        html {
+            background-color: black;
+        }
+
+        /* ANIMATIONER & HOVER */
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            color: turquoise;
+            font-family: "Orbitron", sans-serif;
+            text-align: center;
+        }
+
+        h3 {
+            color: turquoise;
+            font-family: "Exo 2";
+        }
+
+        /* MOBIL RESPONSIVITET */
+        @media (max-width: 786px) {
+            .hero {
+                height: 30vh;
+            }
+        }
+
+        /* BLINK-EFFEKT */
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .blink {
+            animation: blink 1.2s infinite;
+        }
+
+        /* PRODUKTER LINK */
+        .products-link {
+            text-decoration: none;
+            color: turquoise;
+            font-family: "Orbitron", sans-serif;
+            font-size: 1.8rem;
+        }
+
+        .products-link:hover {
+            color: yellow;
+        }
+    </style>
 </body>
-<!-- Video Sektion -->
-<div class="video-container">
-  <iframe
-    class="video"
-    width="560"
-    height="315"
-    src="https://www.youtube.com/embed/enIcZBVPzmg?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&fs=0&modestbranding=1"
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen
-  >
-  </iframe>
-</div>
-<Footer />
-
-<!-- JavaScript til slideshow -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const slides = document.querySelectorAll(".slide");
-    let currentSlide = 0;
-
-    function showNextSlide() {
-      slides[currentSlide].classList.remove("active");
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add("active");
-    }
-
-    setInterval(showNextSlide, 3000); // Skifter hvert 3. sekund
-  });
-</script>
-
-<!-- CSS -->
-<style>
-  /* Hero Slideshow */
-  .hero {
-    position: relative; /* Holder slideshowet i flowet */
-    width: 100%vh; /* Fylder hele bredden */
-    height: 80vh; /* Slideshowet fylder halvdelen af viewport-højden */
-    overflow: hidden; /* Skjuler alt uden for containeren */
-    margin-left: 50px;
-    margin-right: 50px;
-  }
-  .slideshow {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-
-  .slide {
-    position: absolute;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    object-fit: fill; /* Skalerer billedet uden at strække det */
-    opacity: 0; /* Starter med at skjule billederne */
-    transition: opacity 1s ease-in-out;
-    z-index: 1; /* Sørger for, at billeder vises */
-  }
-
-  .slide.active {
-    opacity: 1; /* Gør det aktive billede synligt */
-    z-index: 2; /* Sørger for, at det aktive billede vises øverst */
-  }
-
-  .image-grid {
-    text-align: center; /* Optional: Center-align text */
-    width: 90%;
-    max-width: 600px; /* Limit maximum width */
-    margin: 0 auto;
-    margin-top: 50px;
-    margin-bottom: 0px; /* Center the section on the page */
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 columns */
-    grid-template-rows: auto auto; /* Adjust rows automatically */
-    gap: 20px; /* Space between grid items */
-  }
-
-  .grid div {
-    text-align: center; /* Center the text for each item */
-  }
-
-  .grid img {
-    width: 100%; /* Make images responsive */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 8px; /* Optional: Rounded corners */
-    object-fit: cover; /* Maintain aspect ratio and fill the container */
-  }
-
-  .col1 {
-    grid-row: 1;
-    grid-column: 1;
-  }
-
-  .col2 {
-    grid-row: 1;
-    grid-column: 2;
-  }
-
-  .col3 {
-    grid-row: 2;
-    grid-column: 1;
-  }
-
-
-  .video-container {
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Full viewport height */
-    margin: 0; /* Remove any default margins */
-  }
-
-  .video {
-    width: 100%; /* Optional: Adjust the iframe to fit the container */
-    max-width: 800px; /* Maintain a reasonable max size */
-    height: 100%; /* Maintain aspect ratio */
-  }
-
-  html {
-    background-color: black;
-  }
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
-}
-h2 {
-    color: turquoise;
-    font-family: "Orbitron", sans-serif;
-    text-align: center;
-  }
-h3 {
-    color: turquoise;
-    font-family: "exo 2";
-  }
-
-  @media (max-width: 786px) {
-    .hero {
-      height: 30vh;
-    }
-  }
-
-  @keyframes blink {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-  }
-
-  .blink {
-    animation: blink 1.2s infinite;
-  }
-
-  .products-link {
-    text-decoration: none;
-    color: turquoise;
-    font-family: "Orbitron", sans-serif;
-    font-size: 1.8rem;
-  }
-
-  .products-link:hover {
-    color: yellow;  Gul hover effekt
-  }
-</style>
+</html>
