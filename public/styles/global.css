@@ -1,6 +1,6 @@
 .menu {
   font-family: "Orbitron", sans-serif;
-  text-transform: uppercase; /* Optional: To ensure a consistent menu style */
+  text-transform: uppercase; /* consistent menu style */
 }
 
 .menu a {
@@ -37,20 +37,20 @@ main {
   font-family: 'Orbitron', sans-serif;
 }
 html, body {
-  background-color: grey; /* Ensures no white shows anywhere */
+  background-color: grey; /* sikrer ingen hvide spots i baggrunden */
   margin: 0;
   padding: 0;
-  height: 100%; /* Ensures full-page coverage */
+  height: 100%; /* sikrer fuld side fyld */
 }
 .product-card {
-  background-color: transparent; /* Prevents unwanted background color */
-  border: none; /* Optional: Removes borders if visible */
+  background-color: transparent; /* forhindrer uønsket baggrunds farve */
+  border: none; /* fjerner kanter hvis synlige */
 }
 
 footer {
   font-family: 'Orbitron', sans-serif;
   color: white;
   text-align: center;
-  background-color: #c69cdb; /* Purple */
+  background-color: #c69cdb; /* lilla */
   padding: 1rem 0;
 }

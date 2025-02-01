@@ -19,7 +19,7 @@ export async function getProductById(id) {
   const { data, error } = await supabase
     .from("products")
     .select("*")
-    .eq("id", id) // Match the numeric ID
+    .eq("id", id) // Match det numeriske ID
     .single();
 
   if (error) {

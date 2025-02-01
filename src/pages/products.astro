@@ -39,7 +39,7 @@ const products = allProducts.filter((product) => product.id >= 1 && product.id <
 
 
 <style>
-  /* General Page Styling */
+  /* Styling generelt for siden */
   body {
     background-color: black;
     color: white;
@@ -65,23 +65,23 @@ const products = allProducts.filter((product) => product.id >= 1 && product.id <
   /* Product List Grid */
   .product-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns for desktop */
-    gap: 100px; /* Space between cards */
+    grid-template-columns: repeat(3, 1fr); /* 3 kolonner for desktop */
+    gap: 100px; /* mellemrum mellem cards */
     justify-items: center;
     max-width: 1200px;
-    margin: 0 auto; /* Centers the grid on the page */
-    padding: 0 10px; /* Adds padding around the grid */
+    margin: 0 auto; /* centrerer grid på siden */
+    padding: 0 10px; /* padding rundt om grid */
   }
 
-  /* Individual Product Card */
+  /* Individuelt Product Card */
   .product-item {
     background-color: #1e1e1e;
     border-radius: 8px;
     padding: 10px;
     box-shadow:  4px 8px rgba(0, 0, 0, 0.3);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    width: 100%; /* Ensures consistency across cards */
-    max-width: 500px; /* Makes cards consistent in size */
+    width: 100%; /* ensartethed på tværs af cards */
+    max-width: 500px; /* ensartethed i størrelsen på cards */
   }
 
   .product-item:hover {
@@ -89,16 +89,16 @@ const products = allProducts.filter((product) => product.id >= 1 && product.id <
     box-shadow: 0 px 12px rgba(0, 0, 0, 0.5);
   }
 
-  /* Product Image */
+  /* Produkt billede */
   .product-item img {
     width: 100%;
     height: auto;
     border-radius: 8px;
     object-fit: cover;
-    aspect-ratio: 3 / 4; /* Consistent aspect ratio */
+    aspect-ratio: 3 / 4; /* Konsistent aspect ratio */
   }
 
-  /* Product Name */
+  /* Produkt Navn */
   .product-name {
     font-size: 1.2rem;
     color: #c9a3e6;
@@ -107,7 +107,7 @@ const products = allProducts.filter((product) => product.id >= 1 && product.id <
     text-transform: uppercase;
   }
 
-  /* Product Price */
+  /* Produkt pris */
   .product-price {
     font-size: 1rem;
     color: turquoise;
@@ -116,18 +116,18 @@ const products = allProducts.filter((product) => product.id >= 1 && product.id <
     
   }
 
-  /* Product Link */
+  /* Produkt Link */
   .product-link {
     text-decoration: none;
     color: inherit;
     display: block;
   }
 
-  /* Mobile Responsiveness */
+  /* Mobil responsivitet */
   @media (max-width: 768px) {
     .product-list {
-      grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
-      gap: 20px; /* Adjust spacing */
+      grid-template-columns: repeat(2, 1fr); /* 2 kolonner for mobile */
+      gap: 20px; /* tilpas mellemrum */
     }
   }
 </style>
